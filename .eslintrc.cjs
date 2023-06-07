@@ -27,4 +27,12 @@ module.exports = {
       },
     },
   ],
+  overrides: [
+    {
+      files: ["**/*.dev.ts"],
+      rules: {
+        "no-console": "off",
+      },
+    },
+  ],
 };

@@ -24,7 +24,6 @@ async function postJsonAndParseResponse<T>(
         data += chunk;
       });
       res.on("error", (error) => {
-        console.log("response error", error);
         reject(error);
       });
       res.on("end", () => {
@@ -45,12 +44,12 @@ export class JSONAPIReader {
   public version(): number {
     return 1;
   }
-  public async fetchPost(
+  public async fetchPost<T>(
     request: RequestOptions,
     postBody: string,
     jsonPathString: string
-  ): Promise<any[]> {
-    const json = await postJsonAndParseResponse<any>(
+  ): Promise<T> {
+    const json = await postJsonAndParseResponse<string>(
       this.properties.httpClient.post,
       request,
       postBody
