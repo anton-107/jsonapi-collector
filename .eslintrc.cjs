@@ -22,12 +22,10 @@ module.exports = {
       rules: {
         "max-lines-per-function": "off",
         "max-statements": "off",
-        "max-nested-callbacks": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
+        "max-nested-callbacks": ["error", 3],
       },
     },
-  ],
-  overrides: [
     {
       files: ["**/*.dev.ts"],
       rules: {

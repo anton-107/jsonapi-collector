@@ -23,14 +23,10 @@ async function postJsonAndParseResponse<T>(
       res.on("data", (chunk) => {
         data += chunk;
       });
-      res.on("error", (error) => {
-        reject(error);
-      });
       res.on("end", () => {
         resolve(JSON.parse(data));
       });
     });
-
     req.on("error", (error) => {
       reject(error);
     });
@@ -41,9 +37,6 @@ async function postJsonAndParseResponse<T>(
 
 export class JSONAPIReader {
   constructor(private properties: JSONAPIReaderProperties) {}
-  public version(): number {
-    return 1;
-  }
   public async fetchPost<T>(
     request: RequestOptions,
     postBody: string,
